@@ -1,0 +1,69 @@
+---
+meta:
+  title: Home
+  description: Home page description
+layout: base
+eleventyNavigation:
+  key: Home
+  order: 1
+---
+
+<section class="grid md:grid-cols-3 gap-4 py-8">
+  {% for pokemon in pokemonList %}
+    <div class="rounded-2xl border-2 border-black shadow-custom p-8 mb-4 flex flex-col justify-center items-center hover:bg-gray-100 cursor-pointer" onclick="{{ pokemon.name }}.showModal()">
+      <div class="relative w-full flex justify-center">
+        <p class="absolute lg:top-0 md:top-3 text-gray-300 font-extrabold lg:text-8xl md:text-7xl text-8xl">
+          #{{ pokemon.id | paddedId }}
+        </p>
+        <img src="{{ pokemon.sprites.front_default }}" alt="{{ pokemon.name }}" width="96" height="96" class="z-0"/>
+      </div>
+      <h1 class="font-bold">{{ pokemon.name | capitalize }}</h1>
+      <div class="flex mt-2">
+        {% for type in pokemon.types %}
+          <div class="text-xs py-1 px-2 {{ type.type.name }}-bg mx-1 text-white font-medium rounded-md">
+            {{ type.type.name | uppercase }}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <dialog id="{{ pokemon.name }}" class="modal">
+      <div class="modal-box">
+        <form method="dialog">
+          <button class="btn btn-sm btn-circle btn-ghost absolute right-6 top-6">✕</button>
+        </form>
+        <div class="flex items-center">
+          <img src="{{ pokemon.sprites.front_default }}" alt="{{ pokemon.name }}" width="96" height="96" class="z-0"/>
+          <div class="ml-2">
+            <p class="text-xs text-gray-500 font-medium">
+              #{{ pokemon.id | paddedId }}
+            </p>
+            <h1 class="text-xl font-extrabold">
+              {{ pokemon.name | capitalize }}
+            </h1>
+            <div class="flex mt-2">
+              {% for type in pokemon.types %}
+                <div class="text-xs py-1 px-2 {{ type.type.name }}-bg mx-1 text-white font-medium rounded-md">
+                  {{ type.type.name | uppercase }}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="mt-2 mb-4 px-4">
+          <h2 class="font-bold mb-2">Base Stats</h2>
+          {% for stat in pokemon.stats %}
+            <div class="flex items-center my-2">
+              <p class="w-1/5 md:w-2/6 font-medium text-xs">{{ stat.stat.name | uppercase }}</p>
+              <div class="w-4/5 md:w-4/6">
+                <span class="bg-blue-700 rounded-md h-2 block" style="max-width: {{stat.base_stat}}%"></span>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+      </form>
+    </dialog>
+  {% endfor %}
+</section>

@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  #main {
+    @apply container mx-auto px-8;
+  }
+}
+
+.normal-bg {
+  background-color: #ababab;
+}
+
+.fighting-bg {
+  background-color: #c02f27;
+}
+
+.flying-bg {
+  background-color: #8d91ec;
+}
+
+.poison-bg {
+  background-color: #9c3998;
+}
+
+.ground-bg {
+  background-color: #deb168;
+}
+
+.rock-bg {
+  background-color: #b49d40;
+}
+
+.bug-bg {
+  background-color: #91ae29;
+}
+
+.ghost-bg {
+  background-color: #6c5293;
+}
+
+.steel-bg {
+  background-color: #6a8b97;
+}
+
+.fire-bg {
+  background-color: #ef7e33;
+}
+
+.water-bg {
+  background-color: #668fef;
+}
+
+.grass-bg {
+  background-color: #26b53b;
+}
+
+.electric-bg {
+  background-color: #ba9248;
+}
+
+.psychic-bg {
+  background-color: #d6266b;
+}
+
+.ice-bg {
+  background-color: #9bd8d5;
+}
+
+.dragon-bg {
+  background-color: #6634dc;
+}
